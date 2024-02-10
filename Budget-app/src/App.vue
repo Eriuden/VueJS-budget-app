@@ -2,20 +2,26 @@
   <Header/>
   <div class="container">
     <Total/>
-    <RevenusDépenses/>
+    <RevenusDepenses/>
+    <Transactions/>
+    <AjoutTransaction/>
   </div>
 </template>
 
 <script>
   import Header from './components/Header.vue';
-  import Total from "./components/Total.vue"
-  import RevenusDépenses from './components/RevenusDépenses.vue';
+  import Total from "./components/Total.vue" 
+  import RevenusDepenses from "./components/RevenusDépenses.vue" 
+  import Transactions from "./components/Transactions.vue"
+  import AjoutTransaction from "./components/AjoutTransaction.vue"
 
   export default {
     components: {
       Header,
       Total,
-      RevenusDépenses,
+      RevenusDepenses,
+      Transactions,
+      AjoutTransaction
     },
   }
 </script>
