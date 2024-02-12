@@ -28,7 +28,7 @@
   })
 
   //Revenus
-  const income = computed(()=> {
+  const revenus = computed(()=> {
     return transactions.value
       .filter(()=> transaction.amount > 0)
       .reduce((acc, transaction) => {
@@ -37,7 +37,7 @@
     .toFixed(2)
   })
   //Dépenses
-  const expenses = computed(()=> {
+  const dépenses = computed(()=> {
     return transactions.value
       .filter(()=> transaction.amount < 0)
       .reduce((acc, transaction) => {
