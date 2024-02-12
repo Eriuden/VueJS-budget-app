@@ -1,7 +1,7 @@
 <template>
   <Header/>
   <div class="container">
-    <Total/>
+    <Total :total="total"/>
     <RevenusDepenses/>
     <Transactions :transactions="transactions"/>
     <AjoutTransaction/>
@@ -15,9 +15,15 @@
   import Transactions from "./components/Transactions.vue"
   import AjoutTransaction from "./components/AjoutTransaction.vue"
 
-  import {ref} from 'vue';
+  import {ref, computed} from 'vue';
 
   const transactions = ref([
 
   ])
+
+  const total = computed(()=> {
+    return transactions.value.reduce((acc,transaction)=> {
+      return acc + transaction.amount
+    }, 0)
+  })
 </script>
