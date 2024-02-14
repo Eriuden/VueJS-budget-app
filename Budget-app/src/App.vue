@@ -2,7 +2,7 @@
   <Header/>
   <div class="container">
     <Total :total="total"/>
-    <RevenusDepenses :revenus="revenus" :dépenses="dépenses"/>
+    <RevenusDepenses :revenus="+revenus" :dépenses="+dépenses"/>
     <Transactions :transactions="transactions"/>
     <AjoutTransaction/>
   </div>
