@@ -25,6 +25,14 @@
     const text = ref("")
     const amount = ref("")
 
-    
+    const onSubmit = () => {
+        if (!text.value || !amount.value) {
+            window.alert("Les deux champs doivent être remplis")
+            return
+        }
+
+        text.value=""
+        amount.value=""
+    }
     
 </script>
