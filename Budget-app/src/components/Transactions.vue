@@ -14,11 +14,17 @@
                
 import { defineProps } from 'vue';
 
+const emit = defineEmits()
+
 const props = defineProps({
     transactions: {
         type: Array,
         required: true
     }
 })
+
+const deleteTransaction = (id) => {
+    emit("Transaction supprimée", id)
+}
     
 </script>

@@ -3,7 +3,8 @@
   <div class="container">
     <Total :total="+total"/>
     <RevenusDepenses :revenus="+revenus" :dépenses="+dépenses"/>
-    <Transactions :transactions="transactions"/>
+    <Transactions :transactions="transactions" 
+    @transaction-supprimée="handleTransactionSupprimée"/>
     <AjoutTransaction @transaction-enregistrée="handleTransactionEnregistrée"/>
   </div>
 </template>
@@ -45,5 +46,24 @@
     }, 0)
     .toFixed(2)
   })
+
+  //Ajout transaction
+
+  const handleTransactionEnregistrée = (transactionData) => {
+    transactions.value.push({
+      id: generateUniqueId(),
+      text: transactionData.text,
+      amount: transactionData.amount
+    })
+  }
+
+  const generateUniqueId = () => {
+    return Math.floor(Math.random() * 1000000)
+  }
+
+  const handleTransactionSupprimée = (id) => {
+    transactions.value = transactions.value.filter((transaction)=> 
+    transaction.id !== id)
+  }
 
 </script>
