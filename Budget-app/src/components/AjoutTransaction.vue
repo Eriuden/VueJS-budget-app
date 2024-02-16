@@ -25,11 +25,20 @@
     const text = ref("")
     const amount = ref("")
 
+    const emit = defineEmits(["transaction enregistrée"])
+
     const onSubmit = () => {
         if (!text.value || !amount.value) {
             window.alert("Les deux champs doivent être remplis")
             return
         }
+
+        const transactionData = {
+            text: text.value,
+            amount: parseFloat(amount.value)
+        }
+
+        emit("transaction enregistrée", transactionData)
 
         text.value=""
         amount.value=""

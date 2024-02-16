@@ -1,10 +1,10 @@
 <template>
   <Header/>
   <div class="container">
-    <Total :total="total"/>
+    <Total :total="+total"/>
     <RevenusDepenses :revenus="+revenus" :dépenses="+dépenses"/>
     <Transactions :transactions="transactions"/>
-    <AjoutTransaction/>
+    <AjoutTransaction @transaction-enregistrée="handleTransactionEnregistrée"/>
   </div>
 </template>
 
