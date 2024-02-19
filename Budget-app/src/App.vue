@@ -16,11 +16,19 @@
   import Transactions from "./components/Transactions.vue"
   import AjoutTransaction from "./components/AjoutTransaction.vue"
 
-  import {ref, computed} from 'vue';
+  import {ref, computed, onMounted} from 'vue';
 
   const transactions = ref([
 
   ])
+
+  onMounted(()=> {
+    const savedTransactions = JSON.parse(localStorage.getItem("transactions"))
+
+    if (savedTransactions) {
+      transactions.value = savedTransactions
+    }
+  })
 
   const total = computed(()=> {
     return transactions.value.reduce((acc,transaction)=> {
@@ -55,6 +63,8 @@
       text: transactionData.text,
       amount: transactionData.amount
     })
+
+    saveTransactionsToLocalStorage()
   }
 
   const generateUniqueId = () => {
@@ -64,6 +74,12 @@
   const handleTransactionSupprimée = (id) => {
     transactions.value = transactions.value.filter((transaction)=> 
     transaction.id !== id)
+
+    saveTransactionsToLocalStorage()
+  }
+
+  const saveTransactionsToLocalStorage = () => {
+    localStorage.setItem("transactions", JSON.stringify(transactions.value))
   }
 
 </script>
